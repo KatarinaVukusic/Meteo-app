@@ -4,12 +4,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import Favourites from "./Favourites";
 import DisplayFavourites from "./DisplayFavourites";
+import Settings from "./Settings";
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const [favouritesArray,setArray]=useState([]);
   const [datas,setDataa]=useState([]);
+  const [set,setSettings]=useState(false);
 
   let dataa=[];
   for(let i=0; i<data.length; i++){

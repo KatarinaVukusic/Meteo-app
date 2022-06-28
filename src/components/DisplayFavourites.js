@@ -19,7 +19,7 @@ const DisplayFavourites = ({data}) => {
  return(  
     <div className="column1">
         <h3 className="title">Favoriti</h3>
-        <button onClick={sortArray}>{sortArr ? "Sortiraj uzlazno": "Sortiraj silazno"}
+        <button onClick={sortArray}>{sortArr ? "Sortiraj A-Z": "Sortiraj Z-A"}
         </button>
         {data.map((o) => {
         return(
