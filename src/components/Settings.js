@@ -1,5 +1,8 @@
 import React from 'react';
 import "./SearchBar.css";
+import {
+  Link
+} from "react-router-dom";
 
 const Settings = () => {
  
@@ -14,6 +17,7 @@ const deleteFav = () =>{
  return(
    <div>
    <h2>Settings</h2>
+   <Link to="/" className='set'>Return</Link>
     <div className='temperature'> 
           <label>Temperature Unit</label>
       <div className='row'>
@@ -57,8 +61,10 @@ const deleteFav = () =>{
       </select>
       </div>
       </div>
+      <div className='pastdays'>
       <div className='row'>
          <button className='butset' onClick={defaultSet}>Revert settings to default</button>
+         </div>
          </div>
          <div className='row'>
          <button className='butset' onClick={deleteFav}>Delete favourites</button>

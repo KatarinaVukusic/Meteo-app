@@ -3,40 +3,25 @@ import React, { useState } from 'react';
 import SearchBar from "./components/SearchBar"
 import Data from './gradovi.json';
 import "./components/SearchBar.css";
-import Settings from './components/Settings';
+import {
+  Link
+} from "react-router-dom";
 
-function App() {
-    const [showSet,setSet]=useState(false);
-
-
-  const showSettings = () =>{
-         setSet(!showSet);
-  }
+const App = ( ) => {
 
 
-  if(showSet===false){
   return (
   <div>
     <h2>Meteo-app</h2>
-    <button className='set' onClick={showSettings}>{!showSet ? 'Settings' : 'Return'}</button>
-    <div>
+    <Link to="/Settings" className='set'>Settings</Link>
+    <div className=''>
       <SearchBar placeholder="Unesite grad.." data={Data} />
-    </div>
+    </div>  
 
   </div>
- 
 
-  );}
-  else{
-    return (
-      <div>
-          <Settings/>  
-          <button className='set' onClick={showSettings}>{!showSet ? 'Settings' : 'Return'}</button>
-      </div>
-     
-    
-      );
-  }
+
+  );
 }
 
 export default App;

@@ -1,16 +1,27 @@
-import React from "react";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import React, { useState } from "react";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "./SearchBar.css";
+import Weather from "./Weather";
+import { Link } from "react-router-dom";
 
 const Favourites = ({ value, addToFavourites, removeFromFavourites }) => {
   const favourite = value.favourite;
-  if (favourite===false) {
+  const [fetchedData, setFetchedData] = useState();
+
+  const fetchData = () => {
+    return (
+      <div>
+        <Weather value={value} />
+      </div>
+    );
+  };
+  console.log(fetchedData);
+
+  /* if (favourite===false) { 
     return (
       <div className="row">     
-          <a className="dataItem" href={`https://api.open-meteo.com/v1/forecast?latitude=${value.lat}&longitude=${value.lng}&hourly=temperature_2m&current_weather=true&timeformat=unixtime&timezone=Europe%2FBerlin&past_days=1`} target="_blank">
-          <p>{value.city}</p>
-        </a>    
+         <Link to={{ pathname: "/Weather", state: value}} className='dataItem' >{value.city}</Link>
         <button onClick={addToFavourites}><StarBorderIcon /></button>
         </div>
     );
@@ -18,14 +29,39 @@ const Favourites = ({ value, addToFavourites, removeFromFavourites }) => {
   else if(favourite===true){
     return (
       <div className="row">
-      <a className="dataItem" href={`https://api.open-meteo.com/v1/forecast?latitude=${value.lat}&longitude=${value.lng}&hourly=temperature_2m&current_weather=true&timeformat=unixtime&timezone=Europe%2FBerlin&past_days=1`} target="_blank">
-      <p>{value.city}</p>
-    </a>   
+     <button className="dataItem" onClick={fetchData}>{value.city}</button>  
    <button onClick={removeFromFavourites}><StarIcon /></button> 
    </div>
     );
-  }
+  } */
+
+  return (
+    <div className="row">
+      {!favourite ? (
+        <>
+          <Link
+            to={{ pathname: "/Weather/1" }}
+            className="dataItem"
+            state = "haha"
+          >
+            {value.city}
+          </Link>
+          <button onClick={addToFavourites}>
+            <StarBorderIcon />
+          </button>
+        </>
+      ) : (
+        <>
+          <button className="dataItem" onClick={fetchData}>
+            {value.city}
+          </button>
+          <button onClick={removeFromFavourites}>
+            <StarIcon />
+          </button>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Favourites;
-

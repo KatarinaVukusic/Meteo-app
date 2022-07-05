@@ -4,7 +4,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import Favourites from "./Favourites";
 import DisplayFavourites from "./DisplayFavourites";
-import Settings from "./Settings";
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
